@@ -14,40 +14,54 @@ Nos basaremos en el servidor java del primer reto https://github.com/germanblanc
 
 ## Lista de Tareas
 
-fase 0 - crear un repositorio en GitHub para el proyecto. Hecho!
+### Fase 0
 
-fase 1 - Crear un docker de Cassandra ... facil porque esta en el docker hub ... ya estaria hecho. Pero no deberia costar mucho hacer un docker que ademas de tener Cassandra crease una tabla para insertar nuestros datos como se hacia (al parecer no muy finamente) en MySQL ... https://github.com/misterarias/RETO2/tree/master/DB. Necesitamos una sola tabla con los datos en crudo.
+- crear un repositorio en GitHub para el proyecto. Hecho!
 
-fase 1 - Comprobar la velocidad de insercion maxima en ese Cassandra (con un solo thread). Hacer una aplicacion standalone Java con un bucle que inserte datos a toda velocidad y ver cuanto da. Usar batches de unos 50 registros (5000 por segundo son unos 50 por 10 ms.). Usar prepared statements y binding.
+### Fase 1
 
-fase 1 - Hacer tres scripts, como sea, que lean la tabla de mensajes en crudo y saquen el numero de mensajes cada 10ms, cada segundo y cada minuto respectivamente.
+- Crear un docker de Cassandra ... facil porque esta en el docker hub ... ya estaria hecho. Pero no deberia costar mucho hacer un docker que ademas de tener Cassandra crease una tabla para insertar nuestros datos como se hacia (al parecer no muy finamente) en MySQL ... https://github.com/misterarias/RETO2/tree/master/DB. Necesitamos una sola tabla con los datos en crudo.
 
-fase 1 - Adaptar el servidor Java para que escriba en Cassandra en batches.
+- Comprobar la velocidad de insercion maxima en ese Cassandra (con un solo thread). Hacer una aplicacion standalone Java con un bucle que inserte datos a toda velocidad y ver cuanto da. Usar batches de unos 50 registros (5000 por segundo son unos 50 por 10 ms.). Usar prepared statements y binding.
 
-fase 1 - hacer un docker-compose que lance el sistema
+- Hacer tres scripts, como sea, que lean la tabla de mensajes en crudo y saquen el numero de mensajes cada 10ms, cada segundo y cada minuto respectivamente.
+
+- Adaptar el servidor Java para que escriba en Cassandra en batches.
+
+- hacer un docker-compose que lance el sistema
 
 Con la fase 1 completada ya damos el pego. 
 
-fase 2.1 - Hacer un docker que saque estadisticas de CPU, RAM y disco y las ponga en un log.
+### fase 2.1
 
-fase 2.1 - Hacer otro docker que saque estadisticas de LAG y TPSs y las ponga en un log.
+- Hacer un docker que saque estadisticas de CPU, RAM y disco y las ponga en un log.
 
-fase 2.1 - Docker con el logstash para insertar en Kibana CPU, RAM, disco, LAG y TPSs
+- Hacer otro docker que saque estadisticas de LAG y TPSs y las ponga en un log.
 
-fase 2.1 - Docker con el logstash para insertar en Kibana el numero de mensajes por 10 ms, segundo y minuto.
+- Docker con el logstash para insertar en Kibana CPU, RAM, disco, LAG y TPSs
 
-fase 2.1 - Montar el elasticsearch y el Kibana. A ser posible el Kibana con un dashboard en el que se vean las estadisticas.
+- Docker con el logstash para insertar en Kibana el numero de mensajes por 10 ms, segundo y minuto.
 
-fase 2.1 - hacer un docker-compose que lance el sistema completo
+- Montar el elasticsearch y el Kibana. A ser posible el Kibana con un dashboard en el que se vean las estadisticas.
 
-Si no llegamos a las 5000
+- hacer un docker-compose que lance el sistema completo
 
-fase 2.2 - Hacer el servidor Java multithreaded y probar el rendimiento
+### Fase 3.1
 
-fase 2.3 - Poner una fase intermedia que almacene solamente el resumen
+- Si no llegamos a las 5000. Hacer el servidor Java multithreaded y probar el rendimiento
 
-fase 3 - Hacer un analisis de las estadisticas.
+### Fase 3.2
 
-fase 4 - montar un load balancer en algun docker
+- Si no llegamos a las 5000. Poner una fase intermedia que almacene solamente el resumen
 
-fase 4 - Hacer el cluster y tomar medidas
+### Fase 4.3
+
+- Hacer un analisis de las estadisticas.
+
+### Fase 4.3
+
+- montar un load balancer en algun docker
+
+### Fase 4.3
+
+- Hacer el cluster y tomar medidas
