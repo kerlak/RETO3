@@ -32,7 +32,7 @@ Nos basaremos en el servidor java del primer reto https://github.com/germanblanc
 
 Con la fase 1 completada ya damos el pego. 
 
-### fase 2.1
+### fase 2
 
 - Hacer un docker que saque estadisticas de CPU, RAM y disco y las ponga en un log.
 
