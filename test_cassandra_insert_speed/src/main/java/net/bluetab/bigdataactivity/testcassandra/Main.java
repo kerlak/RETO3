@@ -17,7 +17,7 @@ public class Main {
       Main client = new Main();
       client.connect("reto3db");
       Session session = client.cluster.connect("http_request_log");
-      for (int i = 0; i < 1; i++) {
+      for (int i = 0; i < 100000; i++) {
          long nowMillis = System.currentTimeMillis();
          session.execute(new SimpleStatement("INSERT INTO http_request_time " + 
                                              "(creation_time, host, id,       insertion_time) VALUES (" +
