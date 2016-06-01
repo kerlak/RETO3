@@ -25,7 +25,7 @@ public class Handlers {
 
    public static class DbPostHandler implements HttpHandler {
 
-      private static int iterator = 0;
+      private static int id = 0;
 
       private static Cluster cluster;
       private static Session session;
@@ -47,24 +47,25 @@ public class Handlers {
          String query = br.readLine();
          parseQuery(query, parameters);
 
-         System.out.println(session);
          try {
-            long nowMillis = System.currentTimeMillis();
-            session.execute(new SimpleStatement("INSERT INTO http_request_time " + 
-                                                "(creation_time, host, id,       insertion_time) VALUES (" +
-                                                  nowMillis +  ",0," + (++iterator) + ",toTimestamp(now()))"));
+            String creation_time = (String)parameters.get("value");
+            creation_time = creation_time.substring(0, creation_time.length() - 3);
+            String cql = "INSERT INTO http_request_time " +
+                           "(creation_time, host,       id, insertion_time) VALUES ('" +
+                           creation_time + "',0," + (++id) + ",toTimestamp(now()))";
+            session.execute(new SimpleStatement(cql));
          } catch (Exception ex) {
             // handle any errors
             ex.printStackTrace();
             System.err.println("Exception: " + ex.getMessage());
          }
 
-          // send response
-          he.sendResponseHeaders(200, 0);
-          String response = "<html><body><h1>POST!</h1></body></html>";
-          OutputStream os = he.getResponseBody();
-          os.write(response.toString().getBytes());
-          os.close();
+         // send response
+         he.sendResponseHeaders(200, 0);
+         String response = "<html><body><h1>POST!</h1></body></html>";
+         OutputStream os = he.getResponseBody();
+         os.write(response.toString().getBytes());
+         os.close();
       }
 
       @SuppressWarnings("unchecked")

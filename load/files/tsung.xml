@@ -9,7 +9,7 @@
   
   <!-- Server side setup -->
   <servers>
-    <server host="reto1server" port="80" type="tcp"></server>
+    <server host="reto3server" port="80" type="tcp"></server>
   </servers>
 
   <load duration="10" unit="minute">
