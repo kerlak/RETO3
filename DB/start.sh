@@ -1,2 +1,2 @@
 #!/bin/sh
-docker run --name reto3db -d cassandra
+docker run --name reto3db -d reto3db
