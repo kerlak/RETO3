@@ -1,0 +1,25 @@
+---
+version: '2'
+services:
+    db:
+        build: ./DB
+        ports:
+            - 9042:9042
+
+    server:
+        build: ./server_java
+        ports:
+            - 8888:80
+        links:
+            - db:reto3db
+
+    tsung:
+        build: ./load
+        links:
+            - server:reto3server
+        ports:
+            - 10080:80
+            - 9999:8091
+        environment:
+            RATE: 10
+            HITS: 10
