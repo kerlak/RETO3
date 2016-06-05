@@ -5,30 +5,21 @@ services:
         build: ./DB
         ports:
             - 9042:9042
-        expose:
-            - 9042
-        volumes_from:
-            - stats_data
 
     server:
         build: ./server_java
         ports:
             - 8888:80
         links:
-            - db:reto1db
-        expose:
-            - 80
-        volumes_from:
-            - stats_data
+            - db:reto3db
 
     tsung:
         build: ./load
         links:
-            - server:reto1server
-        expose:
-            - 80
+            - server:reto3server
         ports:
             - 10080:80
+            - 9999:8091
         environment:
             RATE: 10
             HITS: 10
