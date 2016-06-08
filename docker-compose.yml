@@ -8,15 +8,24 @@ services:
 
     server:
         build: ./server_java
-        ports:
-            - 8888:80
+        expose:
+            - 80
         links:
             - db:reto3db
+
+    server-lb:
+        image: dockercloud/haproxy
+        links:
+            - server
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+            - 8888:80
 
     tsung:
         build: ./load
         links:
-            - server:reto3server
+            - server-lb:reto3server
         ports:
             - 10080:80
             - 9999:8091
